@@ -55,15 +55,15 @@ int main(int argc, char **argv)
 
 void checkHostnames() 
 {
-    printf("90DNS Testing Utility v1.0.4\n\n");
+    printf("90DNS Test Programm v1.0.4\n\n");
 
     // Check if system says we're connected to a network (wifi or ethernet)
     Result net_rc = nifmGetInternetConnectionStatus(NULL, NULL, NULL);
     if (R_FAILED(net_rc)) {
-        printf(CONSOLE_RED "WARNING, NOT CONNECTED TO ANY NETWORK! AIRPLANE MODE?\n" CONSOLE_RESET);
+        printf(CONSOLE_RED "WARNUNG, NICHT MIT DEM INTERNET VERBUNDEN! FLUGMODUS?\n" CONSOLE_RESET);
     }
 
-    printf("Testing:\n");
+    printf("Testen:\n");
 
     // Iterate through hostnames array
     for (int i = 0; i < sizeof(hostnames)/sizeof(hostnames[0]); i++)
@@ -83,13 +83,13 @@ void checkHostnames()
         printf("\x1b[3D");
         switch(result) {
             case DNS_BLOCKED:
-                printf(CONSOLE_GREEN "blocked");
+                printf(CONSOLE_GREEN "Blockiert");
                 break;
             case DNS_RESOLVED:
-                printf(CONSOLE_RED "unblocked");
+                printf(CONSOLE_RED "NICHT Blockiert");
                 break;
             case DNS_UNRESOLVED:
-                printf(CONSOLE_YELLOW "unresolved");
+                printf(CONSOLE_YELLOW "unbekannt");
                 break;
         }
 
@@ -99,7 +99,7 @@ void checkHostnames()
         consoleUpdate(console);
     }
 
-    printf("\nPress B to exit. Press X to retry.");
+    printf("\nDruecke B um zu Beenden. Druecke X um ein erneuten Test durchzufuehren.");
     consoleUpdate(console);
 }
 
